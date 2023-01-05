@@ -22,20 +22,6 @@ public:
         m = 0;
         k = 0;
     };
-    double f(int select, double x) {
-        switch (select)
-        {
-        case 0:
-            return 1;
-            break;
-        case 1:
-            return x;
-            break;
-        case 2:
-            return pow(exp(1), -1*x);
-            break;
-       }
-    }
 
     void out_matrix(float** mat, int n, int m) {
         int i, j;
@@ -88,9 +74,7 @@ public:
                 } 
             }
         }
-    
-        
-   
+
 
     };
     float** trans_matrix(float** mat, int n) {
@@ -157,8 +141,7 @@ public:
                 }
                 matrix_up[i][k] = 0;
             }
-            std::cout << std::endl;
-            out_matrix(matrix_up, n, m);
+         
         }
     };
     void reverse() {
@@ -171,11 +154,9 @@ public:
             for (j = i + 1; j < n; j++) {
                 matrix_answer[i][0] -= matrix_up[i][j] * matrix_answer[j][0];
             }
-            std::cout << std::endl;
-            out_matrix(matrix_up, n, m+1);
+            
         }
-        std::cout << "\n\nAx=B answer\n";
-        out_matrix(matrix_answer, n, 1);
+        
     };
  
     float get_alg_addition(float** mat, int n, int x, int y) {
@@ -222,8 +203,9 @@ public:
         std::cout << "\nMatrix A" << std::endl;
         out_matrix(matrix_equations, n, m);
         averse();
-        
         reverse();
+        std::cout << "\n\nAx=B answer\n";
+        out_matrix(matrix_answer, n, 1);
     }
     ~Gauss() {
         del_matrix(matrix_up, n);
